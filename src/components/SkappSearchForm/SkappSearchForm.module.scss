@@ -1,0 +1,8 @@
+@import '../partials/SkappUtils';
+form {
+  display: none;
+  @media screen and (min-width: $break-extra-large) {
+    display:flex;
+    align-items: center;
+  }
+}
