@@ -9,10 +9,9 @@
   background-color: $primary-color;
   @media screen and (min-width: $break-medium) {
     background-color: rgba(255, 255, 255, 0.85);
-    height: pixelsToEms(80);
+    height: pixelsToEms(65);
   }
   @media screen and (min-width: $break-extra-large) {
-    height: pixelsToEms(100);
     justify-content: space-between;
   }
 }
@@ -27,10 +26,10 @@
     @include SkappShadow();
     @include SkappRadius(0px, 0px, 50px, 50px);
     background-color: $primary-color;
-    height: pixelsToEms(122);
+    height: pixelsToEms(85);
     width: pixelsToEms(258);
     img {
-      width: pixelsToEms(195);
+      width: pixelsToEms(180);
     }
   }
   @media screen and (min-width: $break-extra-large) {

@@ -9,9 +9,10 @@
   font-weight: 600;
   color: rgba(255,255,255,0.7);
   border-style: none;
-  font-size:pixelsToEms(20);
+  font-size:pixelsToEms(14);
   text-transform: uppercase;
   padding: 0.5em 1.25em;
+  margin: 1.25em;
   &:hover {
     background-color: darken($color: $primary-color, $amount: 1%);
   }
