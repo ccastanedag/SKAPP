@@ -1,0 +1,23 @@
+@import '../Partials/SkappUtils';
+@import '../../fonts/SkappFont.css';
+.skappButton{
+  @include SkappRadius(6px,6px,6px,6px);
+  display:flex;
+  align-items: center;
+  background-color: $primary-color;
+  font-family: 'NimbusSanL';
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  border-style: none;
+  font-size:pixelsToEms(20);
+  text-transform: uppercase;
+  padding: 0.5em 1.25em;
+  &:hover {
+    background-color: darken($color: $primary-color, $amount: 1%);
+  }
+}
+
+.icon {
+  margin-left: 0;
+  margin-right: 0.4em;
+}
