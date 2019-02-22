@@ -1,4 +1,7 @@
 @import '../Partials/SkappUtils';
+.bar, .logoBox{
+  transition: cubic-bezier(.39,-0.07,.47,1.05) all 1s;
+}
 .bar {
   @include SkappShadow();
   display: flex;
