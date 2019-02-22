@@ -1,0 +1,28 @@
+$primary-color: #00CDAC;
+$break-small:576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-extra-large: 1200px;
+@mixin SkappShadow {
+  -webkit-box-shadow: 0px 8px 25px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 8px 25px 0px rgba(0, 0, 0, 0.16);
+}
+
+@mixin SkappRadius($one, $two, $three, $four) {
+  -webkit-border-top-left-radius: $one;
+  -webkit-border-top-right-radius: $two;
+  -webkit-border-bottom-right-radius: $three;
+  -webkit-border-bottom-left-radius: $four;
+  -moz-border-radius-topleft: $one;
+  -moz-border-radius-topright: $two;
+  -moz-border-radius-bottomright: $three;
+  -moz-border-radius-bottomleft: $four;
+  border-top-left-radius: $one;
+  border-top-right-radius: $two;
+  border-bottom-right-radius: $three;
+  border-bottom-left-radius: $four;
+}
+
+@function pixelsToEms($pixels) {
+  @return $pixels/16 *1em;
+}

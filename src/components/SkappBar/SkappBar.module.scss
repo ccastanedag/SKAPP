@@ -1,0 +1,36 @@
+@import '../Partials/SkappUtils';
+.bar {
+  @include SkappShadow();
+  display: flex;
+  justify-content: center;
+  background-color: $primary-color;
+  @media screen and (min-width: $break-medium) {
+    background-color: rgba(255, 255, 255, 0.85);
+    height: pixelsToEms(80);
+  }
+  @media screen and (min-width: $break-extra-large) {
+    height: pixelsToEms(100);
+    justify-content: flex-start;
+  }
+}
+
+.logoBox {
+  display: flex;
+  justify-content: center;
+  img {
+    width: pixelsToEms(120);
+  }
+  @media screen and (min-width: $break-medium) {
+    @include SkappShadow();
+    @include SkappRadius(0px, 0px, 50px, 50px);
+    background-color: $primary-color;
+    height: pixelsToEms(122);
+    width: pixelsToEms(258);
+    img {
+      width: pixelsToEms(195);
+    }
+  }
+  @media screen and (min-width: $break-extra-large) {
+    @include SkappRadius(0px, 0px, 50px, 0px); 
+  }
+}
