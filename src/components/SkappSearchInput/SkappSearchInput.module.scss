@@ -2,14 +2,6 @@
 
 $input-color:rgba(41,39,36,0.3);
 
-form {
-  display: none;
-  @media screen and (min-width: $break-extra-large) {
-    display:flex;
-    align-items: center;
-  }
-}
-
 .inputBox{
   @include SkappRadius(10px,10px,10px,10px);
   background-color: rgba(41,39,36,0.06);

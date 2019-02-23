@@ -36,3 +36,11 @@
     @include SkappRadius(0px, 0px, 50px, 0px); 
   }
 }
+
+form {
+  display: none;
+  @media screen and (min-width: $break-extra-large) {
+    display:flex;
+    align-items: center;
+  }
+}
