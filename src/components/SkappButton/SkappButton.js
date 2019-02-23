@@ -8,7 +8,7 @@ export default function SkappButton({ iconName, iconSize, text, type, onClick })
   return (
     <div> 
       <button className={styles.skappButton}>
-        <Icon className={styles.icon}>{iconName}</Icon>
+        <Icon className={styles.icon} style={{ fontSize: 25 }}>{iconName}</Icon>
         {text}
       </button>
     </div>

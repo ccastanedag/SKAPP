@@ -1,8 +1,37 @@
 @import '../partials/SkappUtils';
+
+$input-color:rgba(41,39,36,0.3);
+
 form {
   display: none;
   @media screen and (min-width: $break-extra-large) {
     display:flex;
     align-items: center;
   }
+}
+
+.inputBox{
+  @include SkappRadius(10px,10px,10px,10px);
+  background-color: rgba(41,39,36,0.06);
+  display:flex;
+  padding: 0.35em;
+  align-items: center;
+}
+
+input {
+  background-color:rgba(0,0,0,0);
+  border:none;
+  padding: 0;
+  color:  $input-color;
+  &:focus{
+    outline: none;
+  }
+  &::placeholder{
+    color: $input-color;
+  }
+}
+
+.icon{
+  color:$input-color;
+  margin-right: 0.2em;
 }
