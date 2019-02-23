@@ -26,7 +26,6 @@ class SkappBar extends Component {
   }
 
   render() {
-    let { citySubmit } = this.props;
     return (
       <div className={styles.bar}>
         <div className={styles.logoBox}>

@@ -23,6 +23,11 @@ $break-extra-large: 1200px;
   border-bottom-left-radius: $four;
 }
 
+@mixin SkappColumn(){
+  display:flex;
+  flex-direction: column;
+}
+
 @function pixelsToEms($pixels) {
   @return $pixels/16 *1em;
 }

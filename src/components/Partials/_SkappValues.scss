@@ -1,0 +1,6 @@
+@import '../partials/SkappUtils';
+$bar-height-small: pixelsToEms(52);
+$bar-height-medium: pixelsToEms(65);
+$bar-height-extra-large: pixelsToEms(52);
+$white-transparent-opaque:rgba(255, 255, 255, 0.85);
+$white-transparent-translucent:rgba(255, 255, 255, 0.1);

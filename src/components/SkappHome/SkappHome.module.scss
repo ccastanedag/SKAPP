@@ -1,0 +1,52 @@
+@import '../partials/SkappUtils';
+@import '../partials/SkappValues';
+.homeContainer {
+  display: flex;
+  box-sizing: border-box;
+  height: calc(100vh - #{$bar-height-small});
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: $break-medium) {
+    height: calc(100vh - #{$bar-height-medium});
+  }
+  @media screen and (min-width: $break-extra-large) {
+    height: calc(100vh - #{$bar-height-extra-large});
+  }
+}
+
+.homeBox {
+  @include SkappShadow();
+  @include SkappColumn();
+  @include SkappRadius(15px,15px,15px,15px);
+  width: 90%;
+  @media screen and (min-width: $break-medium) {
+    width: 65%;
+  }
+  @media screen and (min-width: $break-extra-large) {
+    width: 25%;
+  }
+}
+
+.title {
+  color: rgba(60, 60, 60, 0.7);
+  font-size: pixelsToEms(30);
+  padding-bottom: 1em;
+}
+
+.homeTop {
+  @include SkappColumn();
+  @include SkappRadius(15px, 15px, 0px, 0px);
+  align-items: center;
+  background-color: $white-transparent-opaque;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  width:100%;
+}
+
+.homeBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white-transparent-translucent;
+  @include SkappRadius(0px,0px,15px,15px);
+}

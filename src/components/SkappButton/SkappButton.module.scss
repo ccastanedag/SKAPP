@@ -16,6 +16,9 @@
   &:hover {
     background-color: darken($color: $primary-color, $amount: 1%);
   }
+  &:focus{
+    outline: none;
+  }
 }
 
 .icon {
