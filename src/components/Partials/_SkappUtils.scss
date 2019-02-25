@@ -3,9 +3,9 @@ $break-small:576px;
 $break-medium: 768px;
 $break-large: 992px;
 $break-extra-large: 1200px;
-@mixin SkappShadow {
-  -webkit-box-shadow: 0px 8px 25px 0px rgba(0, 0, 0, 0.16);
-  box-shadow: 0px 8px 25px 0px rgba(0, 0, 0, 0.16);
+@mixin SkappShadow($x:0px, $y:8px, $blur:25px, $spread: 0px, $color:rgba(0, 0, 0, 0.16)) {
+  -webkit-box-shadow: $x $y $blur $spread $color;
+  box-shadow: $x $y $blur $spread $color;
 }
 
 @mixin SkappRadius($one, $two, $three, $four) {

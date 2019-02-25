@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SkappBar from './components/SkappBar/SkappBar';
 import styles from './Skapp.module.scss';
 import SkappHome from './components/SkappHome/SkappHome';
+import SkappForecast from './components/SkappForecast/SkappForecast';
 
 class App extends Component {
   citySubmit = (city) =>{
@@ -12,7 +13,8 @@ class App extends Component {
     return (
       <div className={styles.background}>
         <SkappBar citySubmit={this.citySubmit}/>
-        <SkappHome citySubmit={this.citySubmit}/>
+        {/* <SkappHome citySubmit={this.citySubmit}/> */}
+        <SkappForecast/>
       </div>
     );
   }
