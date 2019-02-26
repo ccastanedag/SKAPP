@@ -4,6 +4,7 @@ import SkappLogo from '../../images/SkappLogo.svg';
 import SkappSearchInput from '../SkappSearchInput/SkappSearchInput';
 import SkappButton from '../SkappButton/SkappButton';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class SkappBar extends Component {
   static propTypes = {
@@ -35,7 +36,17 @@ class SkappBar extends Component {
           <SkappSearchInput
             value={this.state.cityName}
             onChange={this.handleChange} />
-          <SkappButton text='GET WEATHER' iconName='cloud_done' />
+          {/* To avoid redirection when input is empty */}
+          {this.state.cityName &&
+            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
+              <SkappButton text='GET WEATHER' iconName='cloud_done' />
+            </Link>
+          }
+          {
+            !this.state.cityName &&
+            <SkappButton text='GET WEATHER' iconName='cloud_done' />
+          }
+
         </form>
       </div>
     );
