@@ -4,7 +4,6 @@ import SkappBar from './components/SkappBar/SkappBar';
 import styles from './Skapp.module.scss';
 import SkappHome from './components/SkappHome/SkappHome';
 import SkappForecast from './components/SkappForecast/SkappForecast';
-import { getDetail, getForecast } from './utils/api';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SkappError404 from './components/SkappError404/SkappError404';
 import SkappDetail from './components/SkappDetail/SkappDetail';

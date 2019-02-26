@@ -1,0 +1,78 @@
+@import '../partials/SkappUtils';
+@import '../partials/SkappValues';
+
+ul{
+  list-style-type: none;
+  padding-left:0;
+}
+
+.arrayContainer{
+  display:flex;
+  flex-direction: column;
+  width:70%;
+  align-self: center;
+  @media screen and (max-width:$break-medium) and (orientation: landscape){
+    width:50%;
+  }
+  @media screen and (min-width:$break-medium){
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media screen and (min-width:$break-extra-large){
+    width:50%;
+  }
+}
+
+.dayContainer{
+  @include SkappShadow();
+  @include SkappRadius(15px,15px,15px,15px);
+  background-color: $white-transparent-translucent;
+  margin-top: 2em;
+  @media screen and (min-width:$break-medium){
+    margin-right:1em;
+    margin-left:1em;
+  }
+}
+
+.temperatureIconContainer {
+  display:flex;
+}
+
+.temperature {
+  @include SkappRadius(15px,0px,0px,0px);
+  background-color: $primary-color;
+  font-size: pixelsToEms(40);
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'NimbusSanL';
+  font-weight: bold;
+  color: rgba(255,255,255,0.7);
+  height: 3em;
+}
+
+.icon {
+  //background-color: rgba(0,0,0,1);
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date{
+  @include SkappShadow();
+  font-size: pixelsToEms(30);
+  color: $grey-transparent-opaque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+}
+
+.viewMore{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
