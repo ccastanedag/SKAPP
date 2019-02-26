@@ -4,17 +4,19 @@ import SkappBar from './components/SkappBar/SkappBar';
 import styles from './Skapp.module.scss';
 import SkappHome from './components/SkappHome/SkappHome';
 import SkappForecast from './components/SkappForecast/SkappForecast';
+import { getForecast } from './utils/api';
 
 class App extends Component {
-  citySubmit = (city) =>{
-    alert(city);// Here will go the Fetch call to OpenWeather API
+  citySubmit = async(city) => {
+    const response = await getForecast(city);
+    console.log(response);
   }
   render() {
     return (
       <div className={styles.background}>
-        <SkappBar citySubmit={this.citySubmit}/>
+        <SkappBar citySubmit={this.citySubmit} />
         {/* <SkappHome citySubmit={this.citySubmit}/> */}
-        <SkappForecast/>
+        <SkappForecast />
       </div>
     );
   }
