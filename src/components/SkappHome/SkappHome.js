@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import styles from './SkappHome.module.scss';
 import SkappSearchInput from '../SkappSearchInput/SkappSearchInput';
 import SkappButton from '../SkappButton/SkappButton';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class SkappHome extends Component {
-  static propTypes = {
-    citySubmit: PropTypes.func.isRequired
-  }
 
   state = {
     cityName: ''
@@ -22,9 +19,13 @@ class SkappHome extends Component {
     });
   }
 
+  citySubmit = (city) => {
+    alert(city);
+  }
+
   handleCitySubmit = (event) => {
     event.preventDefault();
-    this.props.citySubmit(this.state.cityName);
+    this.citySubmit(this.state.cityName);
   }
 
   render() {
@@ -38,7 +39,13 @@ class SkappHome extends Component {
               onChange={this.handleChange} />
           </div>
           <div className={styles.homeBottom}>
-            <SkappButton iconName='cloud_done' text='GET WEATHER' />
+            {/* To avoid redirection when input is empty */}
+            {this.state.cityName &&
+              <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
+                <SkappButton iconName='cloud_done' text='GET WEATHER' />
+              </Link>}
+            {!this.state.cityName &&
+              <SkappButton iconName='cloud_done' text='GET WEATHER' />}
           </div>
         </form>
       </div>
