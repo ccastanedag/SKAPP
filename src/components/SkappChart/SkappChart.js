@@ -6,16 +6,52 @@ import styles from './SkappChart.module.scss'
 import { defaults } from 'react-chartjs-2'
 
 export class SkappChart extends Component {
-  static state = {
-    isTemperature: true, // (Average Temperature if true, Humidity otherwise)
-    isUsUnits: true // If false international units are used
+  state = {
+    select:null, // (Average Temperature / Humidity)
+    isUsUnits: true, // If false international units are used
+    dataToRender: null,
+    labelToRender: null
   }
   static propTypes = {
+    dataChart: PropTypes.arrayOf(PropTypes.shape({
+      temperature: PropTypes.number,
+      humidity: PropTypes.number,
+      date: PropTypes.string
+    })).isRequired
+  }
 
+  getDataToRender(key) {
+    const dataChart = this.props.dataChart;
+    return dataChart.map((object) => {
+      return object[key];
+    });
+  }
+  componentDidMount() {
+    let dates = this.getDataToRender('date');
+    const dateLabels = dates.map((date) => {
+      return date.substring(date.indexOf(',')+2, date.length);
+    });
+    this.setState(() => {
+      return {
+        dataToRender: this.getDataToRender('temperature'),
+        labelToRender: dateLabels,
+        select: 'Avg. Temperature'
+      }
+    });
+  }
+
+  handleChange = (event) => {
+    const value = event.target.value;
+    const tooltipText = value === 'temperature' ? 'Avg. Temperature' : 'Humidity';
+    this.setState(() => {
+      return {
+        dataToRender: this.getDataToRender(value),
+        select: tooltipText
+      }
+    });
   }
 
   render() {
-
     defaults.global.defaultFontFamily = 'NimbusSanL';
     defaults.global.defaultFontColor = '#3C3C3C';
     defaults.global.defaultFontSize = 12;
@@ -27,16 +63,16 @@ export class SkappChart extends Component {
       gradient.addColorStop(0.25, '#00CDAC');
       gradient.addColorStop(1, 'white');
       return {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: this.state.labelToRender,
         datasets: [
           {
-            label: 'Avg. Temperature',
+            label: this.state.select,
             backgroundColor: gradient,
             borderColor: 'rgb(0, 205, 172,1)',
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(255,99,132,0.4)',
             hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [65, 59, 80, 81, 56, 55, 40],
+            data: this.state.dataToRender,
           }
         ]
       };
@@ -46,7 +82,7 @@ export class SkappChart extends Component {
       <div className={styles.chartContainer}>
         <div className={styles.shadowContainer}>
           <div className={styles.selectContainer}>
-            <select name="dataToDraw" >
+            <select name="dataToDraw" onChange={this.handleChange}>
               <option value="temperature">Average Temperature</option>
               <option value="humidity">Humidity</option>
             </select>
@@ -82,13 +118,13 @@ export class SkappChart extends Component {
                   ]
                 },
                 tooltips: {
-                  backgroundColor:'#eee',
+                  backgroundColor: '#eee',
                   titleFontColor: '#b2b1b0',
                   titleFontFamily: 'NimbusSanL',
-                  titleFontSize:10,
-                  titleFontStyle:'normal',
+                  titleFontSize: 10,
+                  titleFontStyle: 'normal',
                   footerFontSize: 10,
-                  footerFontStyle:'normal',
+                  footerFontStyle: 'normal',
                   callbacks: {
                     labelColor: function (tooltipItem, chart) {
                       return {

@@ -63,12 +63,15 @@ ul{
 
 .date{
   @include SkappShadow();
-  font-size: pixelsToEms(30);
+  font-size: pixelsToEms(23);
   color: $grey-transparent-opaque;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2em;
+  @media screen and (min-width:$break-medium){
+    font-size: pixelsToEms(25);
+  }
 }
 
 .viewMore{
