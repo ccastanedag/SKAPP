@@ -1,5 +1,5 @@
 import { array } from "prop-types";
-import  moment  from 'moment';
+import moment from 'moment';
 
 const MY_API_KEY = 'fa5f782c06225dc875abd35418b44543';
 
@@ -20,7 +20,14 @@ const filterForecast = (object) => {
   });
 }
 
-// Return in the format of plain object
+const getCountryCity = (object) => {
+  return {
+    country: object.city.country,
+    city: object.city.name
+  }
+}
+
+// Return in the format of plain object to render the chart and cards
 const getForecastFormatted = (object) => {
   const filteredData = filterForecast(object);
   const formatted = filteredData.map((filteredForecast) => {
@@ -28,23 +35,26 @@ const getForecastFormatted = (object) => {
       temperature: Math.round(filteredForecast.main.temp),
       icon: filteredForecast.weather[0].icon,
       date: moment(filteredForecast.dt_txt).format("dddd, MMM DD"),
-      humidity: filteredForecast.main.humidity
+      humidity: filteredForecast.main.humidity,
+      min_temperature: filteredForecast.main.temp_min,
+      max_temperature: filteredForecast.main.temp_max,
+      description: filteredForecast.weather[0].description
     });
   });
+  console.log(formatted);
   return formatted;
 }
 
 // Get 5 days forecast ahead
-const getForecast = async(city, unit) => {
+const getForecast = async (city, unit) => {
   const data = await fetch(`
   https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&type=accurate&appid=${MY_API_KEY}`);
   return data.json();
 }
 
-// Get today data
-const getDetail = async (city, unit) => {
-  const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&type=accurate&appid=${MY_API_KEY}`);
-  return data.json();
-}
+// Convert a string to "Title Case"
+const toTitleCase = (text) => {
+  return text.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+};
 
-export { getForecast, getDetail, getForecastFormatted}
+export { getForecast, getForecastFormatted, getCountryCity, toTitleCase }

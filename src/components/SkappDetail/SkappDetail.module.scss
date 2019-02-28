@@ -1,0 +1,160 @@
+@import '../partials/SkappUtils';
+@import '../partials/SkappValues';
+
+.detailContainer{
+  display: flex;
+  box-sizing: border-box;
+  height: calc(100vh - #{$bar-height-small});
+  justify-content: center;
+  align-items: center;
+  margin-top:2em;
+  @media screen and (max-width: $break-medium) and (orientation: landscape) {
+    height:calc(100vw - #{$bar-height-small});
+    margin-top:2em;
+  }
+  @media screen and (max-width: $break-large) and (orientation: landscape) {
+    height:calc(100vw - #{$bar-height-extra-large});
+    margin-top:0;
+  }
+  @media screen and (min-width: $break-medium) and (orientation: portrait){
+    height: calc(100vh - #{$bar-height-medium});
+    margin-top:0;
+  }
+  @media screen and (min-width: $break-extra-large) and (orientation: portrait) {
+    height: calc(100vh - #{$bar-height-extra-large});
+    margin-top:0;
+  }
+}
+.detailShape{
+  @include SkappShadow();
+  @include SkappRadius(15px,15px,15px,15px);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:90%;
+  @media screen and (min-width:$break-medium){
+    width:50%;
+  }
+  @media screen and (min-width:$break-extra-large){
+    width: 25%;
+  }
+}
+
+.cityContainer {
+  @include SkappRadius(15px,15px,0px,0px);
+  background-color: $primary-color;
+  display:flex;
+  width:100%;
+  justify-content: center;
+  padding-top:0.75em;
+  padding-bottom:0.75em;
+  padding-left:0.75em;
+}
+.city{
+  display:flex;
+  flex-direction: column;
+  flex:1;
+  align-items: center;
+}
+
+.flag{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding-left:1em;
+  flex:1;
+}
+
+h1,h2,h3,h4{
+  margin:0;
+  padding:0;
+}
+
+h1 {
+  color: $white-transparent-opaque;
+  font-family: 'NimbusSanL';
+  font-size: 40px;
+  font-style:normal;
+  font-weight:100;
+}
+
+h4{
+  @extend h1;
+  font-size: 16px;
+  font-family: 'NimbusSanL';
+}
+
+
+h3 {
+  color: $primary-color;
+  font-size: 35px;
+  font-family: 'NimbusSanL';
+  font-weight: 600;
+  padding:0.5em;
+}
+
+.descriptionContainer{
+  @include SkappShadow();
+  background-color: $white-transparent-opaque;
+  display:flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  padding:1em;
+}
+
+h2{
+  color:$grey-transparent-opaque;
+  font-size: 25px;
+  font-family: 'NimbusSanL';
+  font-weight: 100; 
+}
+h2,h3{
+  flex:1;
+  text-align: center;
+}
+
+.iconContainer{
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperaturesContainer{
+  display:flex; 
+  width:100%;
+}
+.minTemperature, .maxTemperature{
+  flex:1;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding:0.35em;
+  position:relative;
+  z-index: -1;
+}
+.minTemperature{
+  color: $grey-transparent-opaque;
+}
+.maxTemperature{
+  background-color: $primary-color;
+  color: $white-transparent-opaque;
+  h2 {
+    color: $white-transparent-opaque;
+  }
+  
+}
+
+.backButtonContainer{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white-transparent-translucent;
+  width:100%;
+  padding:0.5em;
+}

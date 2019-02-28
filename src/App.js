@@ -20,7 +20,7 @@ class App extends Component {
            <Switch>
              <Route exact path='/' component={SkappHome}/>
              <Route exact path='/forecast' component={SkappForecast} />
-             <Route path='/detail' component={SkappDetail} />
+             <Route path='/details' component={SkappDetail} />
              <Route component={SkappError404} />
            </Switch>
          </div>

@@ -1,7 +1,7 @@
 @import './components/Partials/SkappUtils';
 .background{
+  width:100%;
   background-color: #ECEFF0;
-  //height: auto;
   background: url('./images/Waves.svg') bottom right / contain no-repeat, url('./images/Continents.svg') 20% center /contain repeat-y;
   @media screen and (min-width: $break-extra-large){
     background: url('./images/Waves.svg') bottom right / contain no-repeat, url('./images/Continents.svg') 20% center /contain no-repeat;
