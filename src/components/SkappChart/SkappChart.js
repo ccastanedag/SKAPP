@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-//import styles from './SkappChart.module.scss'
+import SettingsContext from '../../utils/SkappContexts'
 import { Line } from 'react-chartjs-2'
 import styles from './SkappChart.module.scss'
 import { defaults } from 'react-chartjs-2'
 
 export class SkappChart extends Component {
+  static contextType = SettingsContext;
   state = {
     select:null, // (Average Temperature / Humidity)
-    isUsUnits: true, // If false international units are used
     dataToRender: null,
     labelToRender: null
   }
@@ -142,8 +142,10 @@ export class SkappChart extends Component {
           </div>
           <div className={styles.unitContainer}>
             <div className={styles.unitColor}></div>
-            {/* TODO: Instead of celsius should receive a prop */}
-            <div className={styles.unitText}>Celsius</div>
+            <div className={styles.unitText}>{
+              this.state.select === 'Humidity' ? 'Percentage' 
+              : (this.context.settings.metric? 'Celsius':'Farenheit')
+              }</div>
           </div>
         </div>
       </div>

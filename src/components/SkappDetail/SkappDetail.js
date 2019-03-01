@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 import styles from './SkappDetail.module.scss';
 import { SkappIcon } from '../SkappForecastArray/SkappForecastArray';
 import SkappButton from '../SkappButton/SkappButton';
+import SettingsContext from '../../utils/SkappContexts'
 
 
 const SkappFlag = ({ countryCode }) => {
   const flagSrc = `https://www.countryflags.io/${countryCode}/flat/64.png`;
-  return <img src={flagSrc}/>
+  return <img src={flagSrc} />
 }
 
 export class SkappDetail extends Component {
+  static contextType = SettingsContext;
   render() {
     const { city,
       country,
@@ -30,7 +32,7 @@ export class SkappDetail extends Component {
               <h4>{date}</h4>
             </div>
             <div className={styles.flag}>
-              <SkappFlag countryCode={country}/>
+              <SkappFlag countryCode={country} />
             </div>
           </div>
           <div className={styles.descriptionContainer}>
@@ -40,8 +42,8 @@ export class SkappDetail extends Component {
             </div>
           </div>
           <div className={styles.temperaturesContainer}>
-            <div className={styles.minTemperature}><h2>Min</h2>{min_temperature}</div>
-            <div className={styles.maxTemperature}><h2>Max</h2>{max_temperature}</div>
+            <div className={styles.minTemperature}><h2>Min</h2>{min_temperature}{this.context.settings.metric ? ' C°' : ' F°'}</div>
+            <div className={styles.maxTemperature}><h2>Max</h2>{max_temperature}{this.context.settings.metric ? ' C°' : ' F°'}</div>
           </div>
           <div className={styles.descriptionContainer}>
             <h2>Humidity</h2>

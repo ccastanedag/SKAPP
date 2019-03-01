@@ -4,16 +4,19 @@ import SkappChart from '../SkappChart/SkappChart';
 import SkappForecastArray from '../SkappForecastArray/SkappForecastArray';
 import queryString from 'query-string';
 import { getForecast, getForecastFormatted, getCountryCity } from '../../utils/api';
+import SettingsContext from '../../utils/SkappContexts'
 
 export class SkappForecast extends Component {
+  static contextType = SettingsContext;
   state = {
     dataForecast: null, // Data filtered and formatted from Open Weather
     countryCity: null
   }
 
   async componentDidMount() {
+    const isMetric = this.context.settings.metric? 'metric' : 'imperial';
     const search = queryString.parse(this.props.location.search);
-    const foreCast = await getForecast(search.city, 'metric');
+    const foreCast = await getForecast(search.city, isMetric);
     this.setState(() => {
       return {
         dataForecast: getForecastFormatted(foreCast),

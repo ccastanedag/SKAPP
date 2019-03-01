@@ -4,8 +4,9 @@ import SkappButton from '../SkappButton/SkappButton';
 import styles from './SkappForecastArray.module.scss';
 import { Link } from 'react-router-dom';
 import { toTitleCase } from '../../utils/api';
+import SettingsContext from '../../utils/SkappContexts'
 
-export const SkappIcon = ({ icon , size }) => {
+export const SkappIcon = ({ icon, size }) => {
   const imgSrc = `/images/${icon}.svg`;
   return (
     <img src={imgSrc} width={size} />
@@ -17,6 +18,7 @@ SkappIcon.defaultProps = {
 }
 
 export class SkappForecastArray extends Component {
+  static contextType = SettingsContext;
   static propTypes = {
     dataForecast: PropTypes.array.isRequired, // The data required to render the chart and cards
     unit: PropTypes.string.isRequired,
@@ -32,10 +34,9 @@ export class SkappForecastArray extends Component {
               <li key={day.date}>
                 <div className={styles.dayContainer}>
                   <div className={styles.temperatureIconContainer}>
-                    {unit === 'Celsius' && <div className={styles.temperature}>{day.temperature} C°</div>}
-                    {unit === 'Farenheit' && <div className={styles.temperature}>{day.temperature} F°</div>}
+                    <div className={styles.temperature}>{day.temperature} {this.context.settings.metric? 'C°':'F°'}</div>
                     <div className={styles.icon}>
-                      <SkappIcon icon={day.icon} size={100}/>
+                      <SkappIcon icon={day.icon} size={100} />
                     </div>
                   </div>
                   <div className={styles.date}>{day.date}</div>
