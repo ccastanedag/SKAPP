@@ -41,7 +41,6 @@ const getForecastFormatted = (object) => {
       description: filteredForecast.weather[0].description
     });
   });
-  console.log(formatted);
   return formatted;
 }
 

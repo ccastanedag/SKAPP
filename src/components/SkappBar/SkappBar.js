@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
-import styles from './SkappBar.module.scss';
-import SkappLogo from '../../images/SkappLogo.svg';
-import SkappSearchInput from '../SkappSearchInput/SkappSearchInput';
-import SkappButton from '../SkappButton/SkappButton';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import styles from './SkappBar.module.scss'
+import SkappLogo from '../../images/SkappLogo.svg'
+import SkappSearchInput from '../SkappSearchInput/SkappSearchInput'
+import SkappButton from '../SkappButton/SkappButton'
+import { Link } from 'react-router-dom'
+import SkappSettingsWidget from '../SkappSettingsWidget/SkappSettingsWidget'
 
 class SkappBar extends Component {
-  static propTypes = {
-    citySubmit: PropTypes.func.isRequired
-  }
-
   state = {
     cityName: ''
   }
@@ -46,8 +42,8 @@ class SkappBar extends Component {
             !this.state.cityName &&
             <SkappButton text='GET WEATHER' iconName='cloud_done' />
           }
-
         </form>
+        {this.props.location.pathname === '/' && <SkappSettingsWidget />}
       </div>
     );
   }
