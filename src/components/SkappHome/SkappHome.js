@@ -28,6 +28,12 @@ class SkappHome extends Component {
     this.citySubmit(this.state.cityName);
   }
 
+  resetInput = () => {
+    this.setState({
+      cityName: ''
+    });
+  }
+
   render() {
     return (
       <div className={styles.homeContainer}>
@@ -42,10 +48,10 @@ class SkappHome extends Component {
             {/* To avoid redirection when input is empty */}
             {this.state.cityName &&
               <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
-                <SkappButton iconName='cloud_done' text='GET WEATHER' />
+                <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput}/>
               </Link>}
             {!this.state.cityName &&
-              <SkappButton iconName='cloud_done' text='GET WEATHER' />}
+              <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput}/>}
           </div>
         </form>
       </div>

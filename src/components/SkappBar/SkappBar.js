@@ -17,6 +17,12 @@ class SkappBar extends Component {
     );
   }
 
+  resetInput = () => {
+    this.setState({
+      cityName: ''
+    });
+  }
+
   render() {
     return (
       <div className={styles.bar}>
@@ -27,10 +33,9 @@ class SkappBar extends Component {
           <SkappSearchInput
             value={this.state.cityName}
             onChange={this.handleChange} />
-          {/* To avoid redirection when input is empty */}
           {
             <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
-              <SkappButton text='GET WEATHER' iconName='cloud_done' />
+              <SkappButton text='GET WEATHER' iconName='cloud_done' onClick={this.resetInput}/>
             </Link>
           }
         </form>
