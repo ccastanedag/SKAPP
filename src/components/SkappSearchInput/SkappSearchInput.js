@@ -15,7 +15,7 @@ class SkappSearchInput extends Component {
       <div className={styles.inputBox}>
         <Icon className={styles.icon} style={{ fontSize: 25 }}>search</Icon>
         <input
-          placeholder='Eg: New York'
+          placeholder='Write a city...'
           value={value}
           onChange={onChange}
           className={styles.input} />
