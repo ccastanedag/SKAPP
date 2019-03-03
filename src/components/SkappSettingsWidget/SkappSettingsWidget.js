@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styles from './SkappSettingsWidget.module.scss'
 import Switch from '@material-ui/core/Switch'
 import SettingsContext from '../../utils/SkappContexts'
 import { Icon } from '@material-ui/core'
 import { withStyles } from '@material-ui/core'
-import purple from '@material-ui/core/colors/purple';
 
 const switchesStyles = theme => ({
   iOSSwitchBase: {

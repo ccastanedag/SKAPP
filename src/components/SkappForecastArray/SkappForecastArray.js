@@ -9,7 +9,7 @@ import SettingsContext from '../../utils/SkappContexts'
 export const SkappIcon = ({ icon, size }) => {
   const imgSrc = `/images/${icon}.svg`;
   return (
-    <img src={imgSrc} width={size} />
+    <img src={imgSrc} width={size} alt='weather icon'/>
   );
 }
 
@@ -25,7 +25,7 @@ export class SkappForecastArray extends Component {
   }
 
   render() {
-    const { dataForecast, unit, countryCity } = this.props;
+    const { dataForecast, countryCity } = this.props;
     return (
       <ul className={styles.arrayContainer}>
         {

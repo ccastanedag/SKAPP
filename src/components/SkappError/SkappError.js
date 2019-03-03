@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import SkappButton from '../SkappButton/SkappButton'
 import styles from './SkappError.module.scss'
 import Icon from '@material-ui/core/Icon'
-import { Link } from '@material-ui/core';
 
 export class SkappError extends Component {
   static propTypes = {

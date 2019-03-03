@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styles from './SkappDetail.module.scss';
 import { SkappIcon } from '../SkappForecastArray/SkappForecastArray';
 import SkappButton from '../SkappButton/SkappButton';
 import SettingsContext from '../../utils/SkappContexts'
-import queryString from 'query-string';
 import SkappError from '../SkappError/SkappError'
 
 
 const SkappFlag = ({ countryCode }) => {
   const flagSrc = `https://www.countryflags.io/${countryCode}/flat/64.png`;
-  return <img src={flagSrc} />
+  return <img src={flagSrc} alt='flag country'/>
 }
 
 export class SkappDetail extends Component {
