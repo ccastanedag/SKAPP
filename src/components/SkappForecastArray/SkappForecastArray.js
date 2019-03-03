@@ -45,7 +45,7 @@ export class SkappForecastArray extends Component {
                       pathname: '/details',
                       search: '?city=' + countryCity.city,
                       state: {
-                        city: countryCity.city,
+                        city: toTitleCase(countryCity.city),
                         country: countryCity.country,
                         date: day.date,
                         description: toTitleCase(day.description),

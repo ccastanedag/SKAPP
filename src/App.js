@@ -5,7 +5,7 @@ import styles from './Skapp.module.scss';
 import SkappHome from './components/SkappHome/SkappHome';
 import SkappForecast from './components/SkappForecast/SkappForecast';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SkappError404 from './components/SkappError404/SkappError404';
+import SkappError from './components/SkappError/SkappError';
 import SkappDetail from './components/SkappDetail/SkappDetail';
 import SettingsContext from './utils/SkappContexts';
 
@@ -34,7 +34,23 @@ class App extends Component {
               <Route exact path='/' component={SkappHome} />
               <Route exact path='/forecast' component={SkappForecast} />
               <Route path='/details' component={SkappDetail} />
-              <Route component={SkappError404} />
+              <Route exact path='/city-not-found' render={() => <SkappError
+                icon='youtube_searched_for'
+                messages={{
+                  h1: 'OH NO!',
+                  h2: `CITY NOT FOUND`,
+                  h3: `Sorry, We couldn't find weather information about your city. Is it possible that you have written it wrong?`
+                }}
+                buttonIcon='cloud_done'
+                buttonText='TRY AGAIN' />} />
+              <Route render={() => <SkappError icon='cloud_off'
+                messages={{
+                  h1: 'OOPS!',
+                  h2: 'PAGE NOT FOUND',
+                  h3: 'The page you are looking for might have been removed, had its name changed or is temporarily unavailable'
+                }}
+                buttonIcon='cloud_done'
+                buttonText='BACK TO HOME' />} />
             </Switch>
           </SettingsContext.Provider>
         </div>

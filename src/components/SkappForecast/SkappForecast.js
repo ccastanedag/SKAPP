@@ -14,23 +14,72 @@ export class SkappForecast extends Component {
   }
 
   async componentDidMount() {
-    const isMetric = this.context.settings.metric? 'metric' : 'imperial';
+    const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
     const search = queryString.parse(this.props.location.search);
-    const foreCast = await getForecast(search.city, isMetric);
-    this.setState(() => {
-      return {
-        dataForecast: getForecastFormatted(foreCast),
-        countryCity: getCountryCity(foreCast)
+    if (search.city === '' || !('city' in search)) {
+      this.props.history.push('/page-not-found');
+    }
+    else {
+      const foreCast = await getForecast(search.city, isMetric);
+      if (foreCast.cod === '200') {
+        this.setState(() => {
+          return {
+            dataForecast: getForecastFormatted(foreCast),
+            countryCity: getCountryCity(foreCast)
+          }
+        });
       }
-    });
+      if (foreCast.cod === '404') {
+        this.props.history.push('/city-not-found');
+      }
+    }
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    const oldSearch = queryString.parse(prevProps.location.search);
+    const newSearch = queryString.parse(this.props.location.search);
+
+    if (('city' in oldSearch) && ('city' in newSearch)) {
+      if (oldSearch.city !== newSearch.city) {
+        this.setState(() => {
+          return {
+            dataForecast: null,
+            countryCity: null
+          }
+        });
+        const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
+        const search = queryString.parse(this.props.location.search);
+        console.log('UPDATE', search);
+        if (search.city === '' || !('city' in search)) {
+          this.props.history.push('/page-not-found');
+        }
+        else {
+          const foreCast = await getForecast(search.city, isMetric);
+          if (foreCast.cod === '200') {
+            this.setState(() => {
+              return {
+                dataForecast: getForecastFormatted(foreCast),
+                countryCity: getCountryCity(foreCast)
+              }
+            });
+          }
+          if (foreCast.cod === '404') {
+            this.props.history.push('/city-not-found');
+          }
+        }
+      }
+    }
+    else {
+      this.props.history.push('/page-not-found');
+    }
   }
 
   render() {
     const { dataForecast, countryCity } = this.state;
     return (
       <div className={styles.forecastContainer}>
-        {dataForecast && <SkappChart dataChart={dataForecast}/>}
-        {dataForecast && <SkappForecastArray dataForecast={dataForecast} unit='Celsius' countryCity={countryCity}/>}     
+        {dataForecast && <SkappChart dataChart={dataForecast} />}
+        {dataForecast && <SkappForecastArray dataForecast={dataForecast} unit='Celsius' countryCity={countryCity} />}
         {!dataForecast && <p>LOADING</p>}
       </div>
     )

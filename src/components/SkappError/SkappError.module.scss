@@ -1,0 +1,58 @@
+@import '../partials/SkappUtils';
+@import '../partials/SkappValues';
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: calc(100vh - #{$bar-height-small});
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: $break-medium) and (orientation: landscape) {
+    height:calc(100vw - #{$bar-height-small});
+  }
+  @media screen and (max-width: $break-large) and (orientation: landscape) {
+    height:calc(100vw - #{$bar-height-medium});
+  }
+  @media screen and (min-width: $break-medium) and (orientation: portrait) {
+    height: calc(100vh - #{$bar-height-medium});
+  }
+  @media screen and (min-width: $break-extra-large) and (orientation: portrait) {
+    height: calc(100vh - #{$bar-height-extra-large});
+  }
+}
+
+.h1 {
+  color:$primary-color;
+  font-family: 'NimbusSanL';
+  font-weight: 600;
+  font-style:bold;
+  font-size:pixelsToEms(70);
+  text-align: center;
+}
+
+.h2 {
+  color:$primary-color;
+  font-family: 'NimbusSanL';
+  font-weight: 600;
+  font-style:bold;
+  font-size:pixelsToEms(30);
+  text-align: center;
+}
+
+.h3 {
+  color:$grey-transparent-opaque;
+  font-family: 'NimbusSanL';
+  font-weight: 100;
+  font-style:regular;
+  font-size: pixelsToEms(16);
+  text-align: center;
+  width:90%;
+  @media screen and (min-width:$break-medium)
+  {
+    width:55%;
+  }
+  @media screen and (min-width:$break-extra-large)
+  {
+    width:25%;
+  }
+}
