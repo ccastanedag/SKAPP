@@ -6,7 +6,8 @@
 .bar {
   @include SkappShadow();
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  align-items: center;
   background-color: $primary-color;
   height: $bar-height-small;
   @media screen and (min-width: $break-medium) {
@@ -14,20 +15,34 @@
     height: $bar-height-medium;
   }
   @media screen and (min-width: $break-extra-large) {
-    justify-content: space-between;
+    justify-content: flex-start;
     height: $bar-height-extra-large;
   }
 }
-
+.logoBoxContainer{
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width:$break-extra-large){
+    order:-1;
+    flex:inherit;
+    justify-content: flex-start;
+  }
+}
 .logoBox {
+  flex:1;
   display: flex;
   justify-content: center;
+  margin-left: -1em;
+  cursor: pointer;
   img {
     width: pixelsToEms(120);
   }
   @media screen and (min-width: $break-medium) {
     @include SkappShadow();
     @include SkappRadius(0px, 0px, 50px, 50px);
+    flex:none;
     background-color: $primary-color;
     height: pixelsToEms(85);
     width: pixelsToEms(258);
@@ -40,10 +55,45 @@
   }
 }
 
-form {
+form.SkappBar {
   display: none;
   @media screen and (min-width: $break-extra-large) {
     display:flex;
     align-items: center;
+    margin-left:auto;
+  }
+}
+
+/*
+*   SkappBack Style
+*/
+
+.backDesktop{
+  display:none;
+  @media screen and (min-width:$break-extra-large){
+    display:block;
+    margin-left:2.5em;
+    font-family: 'NimbusSanL';
+    font-size: pixelsToEms(18);
+    color:$primary-color;
+    cursor: pointer;
+  }
+}
+
+.backMobile {
+  display:flex;
+  justify-content: center;
+  align-self: center;
+  margin-left:0.75em;
+  @media screen and (min-width:$break-extra-large){
+    display:none;
+  }
+}
+
+.iconBack{
+  color:$white-transparent-opaque;
+  @media screen and (min-width:$break-medium)
+  {
+    color: $primary-color;
   }
 }

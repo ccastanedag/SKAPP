@@ -13,6 +13,7 @@
   text-transform: uppercase;
   padding: 0.5em 1.25em;
   margin: 1.25em;
+  cursor: pointer;
   &:hover {
     background-color: darken($color: $primary-color, $amount: 1%);
   }

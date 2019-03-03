@@ -34,7 +34,8 @@ class App extends Component {
               <Route exact path='/' component={SkappHome} />
               <Route exact path='/forecast' component={SkappForecast} />
               <Route path='/details' component={SkappDetail} />
-              <Route exact path='/city-not-found' render={() => <SkappError
+              <Route exact path='/city-not-found' render={(props) => <SkappError
+                {...props}
                 icon='youtube_searched_for'
                 messages={{
                   h1: 'OH NO!',
@@ -43,7 +44,9 @@ class App extends Component {
                 }}
                 buttonIcon='cloud_done'
                 buttonText='TRY AGAIN' />} />
-              <Route render={() => <SkappError icon='cloud_off'
+              <Route render={(props) => <SkappError
+                {...props}
+                icon='cloud_off'
                 messages={{
                   h1: 'OOPS!',
                   h2: 'PAGE NOT FOUND',

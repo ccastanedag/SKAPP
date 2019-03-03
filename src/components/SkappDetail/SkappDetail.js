@@ -21,6 +21,9 @@ export class SkappDetail extends Component {
       });
     }
   }
+  backToForecast = () => {
+    this.props.history.goBack();
+  }
   state = {
     isLocationStateValid: false
   }
@@ -65,7 +68,7 @@ export class SkappDetail extends Component {
               <h3>{humidity}%</h3>
             </div>
             <div className={styles.backButtonContainer}>
-              <SkappButton iconName='search' text='BACK TO FORECAST' />
+              <SkappButton iconName='search' text='BACK TO FORECAST' onClick={this.backToForecast} />
             </div>
           </div>
         </div>)}

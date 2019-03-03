@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import SkappButton from '../SkappButton/SkappButton'
 import styles from './SkappError.module.scss'
 import Icon from '@material-ui/core/Icon'
+import { Link } from '@material-ui/core';
 
 export class SkappError extends Component {
   static propTypes = {
@@ -15,6 +16,10 @@ export class SkappError extends Component {
     buttonIcon: PropTypes.string.isRequired,
     buttonText: PropTypes.string.isRequired
   }
+
+backToHome = () => {
+  this.props.history.push('/');
+}
 
   render() {
     const { icon, messages, buttonIcon, buttonText } = this.props;
@@ -31,7 +36,7 @@ export class SkappError extends Component {
           <div className={styles.h3}>
             {messages.h3}
           </div>
-          <SkappButton iconName={buttonIcon} text={buttonText} />
+            <SkappButton iconName={buttonIcon} text={buttonText} onClick={this.backToHome} />       
         </div>
       </div>
     )

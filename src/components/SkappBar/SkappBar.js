@@ -5,6 +5,18 @@ import SkappSearchInput from '../SkappSearchInput/SkappSearchInput'
 import SkappButton from '../SkappButton/SkappButton'
 import { Link } from 'react-router-dom'
 import SkappSettingsWidget from '../SkappSettingsWidget/SkappSettingsWidget'
+import { Icon } from '@material-ui/core';
+
+const SkappBack = ({ textBack, iconBack }) => {
+  return (
+    <div>
+      <div className={styles.backMobile}>
+        <Icon className={styles.iconBack} style={{ fontSize: 25 }}>{iconBack}</Icon>
+      </div>
+      <div className={styles.backDesktop}>{textBack}</div>
+    </div>
+  )
+}
 
 class SkappBar extends Component {
   state = {
@@ -23,19 +35,26 @@ class SkappBar extends Component {
     });
   }
 
+  backToHome = () => {
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div className={styles.bar}>
-        <div className={styles.logoBox}>
-          <img src={SkappLogo} alt='Skapp Logo' />
+        <SkappBack textBack='BACK' iconBack='arrow_back' />
+        <div className={styles.logoBoxContainer}>
+          <div className={styles.logoBox} onClick={this.backToHome}>
+            <img src={SkappLogo} alt='Skapp Logo' />
+          </div>
         </div>
-        <form className={styles}>
+        <form className={styles.SkappBar}>
           <SkappSearchInput
             value={this.state.cityName}
             onChange={this.handleChange} />
           {
             <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
-              <SkappButton text='GET WEATHER' iconName='cloud_done' onClick={this.resetInput}/>
+              <SkappButton text='GET WEATHER' iconName='cloud_done' onClick={this.resetInput} />
             </Link>
           }
         </form>
