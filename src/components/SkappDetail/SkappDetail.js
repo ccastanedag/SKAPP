@@ -37,7 +37,6 @@ export class SkappDetail extends Component {
         min_temperature } = this.props.history.location.state;
     }
 
-    console.log('STATE', this.props.history.location.state);
     return (
       <div>
         {this.state.isLocationStateValid && (<div className={styles.detailContainer}>

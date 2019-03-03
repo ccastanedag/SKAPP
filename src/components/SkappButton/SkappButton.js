@@ -20,3 +20,7 @@ SkappButton.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 }
+
+SkappButton.defaultProps = {
+  onClick: ()=>{}
+}
