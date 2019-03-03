@@ -7,15 +7,21 @@ import { Link } from 'react-router-dom'
 import SkappSettingsWidget from '../SkappSettingsWidget/SkappSettingsWidget'
 import { Icon } from '@material-ui/core';
 
-const SkappBack = ({ textBack, iconBack }) => {
-  return (
-    <div>
-      <div className={styles.backMobile}>
-        <Icon className={styles.iconBack} style={{ fontSize: 25 }}>{iconBack}</Icon>
+class SkappBack extends React.Component {
+  goBack = (history) => {
+    history.goBack();
+  }
+  render() {
+    const { textBack, iconBack, history } = this.props
+    return (
+      <div onClick={() => this.goBack(history)}>
+        <div className={styles.backMobile}>
+          <Icon className={styles.iconBack} style={{ fontSize: 25 }}>{iconBack}</Icon>
+        </div>
+        <div className={styles.backDesktop}>{textBack}</div>
       </div>
-      <div className={styles.backDesktop}>{textBack}</div>
-    </div>
-  )
+    )
+  }
 }
 
 class SkappBar extends Component {
@@ -42,7 +48,7 @@ class SkappBar extends Component {
   render() {
     return (
       <div className={styles.bar}>
-        <SkappBack textBack='BACK' iconBack='arrow_back' />
+        <SkappBack textBack='BACK' iconBack='arrow_back' history={this.props.history} />
         <div className={styles.logoBoxContainer}>
           <div className={styles.logoBox} onClick={this.backToHome}>
             <img src={SkappLogo} alt='Skapp Logo' />
