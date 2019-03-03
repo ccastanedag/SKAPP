@@ -19,15 +19,6 @@ class SkappHome extends Component {
     });
   }
 
-  citySubmit = (city) => {
-    alert(city);
-  }
-
-  handleCitySubmit = (event) => {
-    event.preventDefault();
-    this.citySubmit(this.state.cityName);
-  }
-
   resetInput = () => {
     this.setState({
       cityName: ''
@@ -37,7 +28,7 @@ class SkappHome extends Component {
   render() {
     return (
       <div className={styles.homeContainer}>
-        <form className={styles.homeBox} onSubmit={this.handleCitySubmit}>
+        <form className={styles.homeBox}>
           <div className={styles.homeTop}>
             <label className={styles.title}>Enter a city</label>
             <SkappSearchInput
@@ -45,13 +36,9 @@ class SkappHome extends Component {
               onChange={this.handleChange} />
           </div>
           <div className={styles.homeBottom}>
-            {/* To avoid redirection when input is empty */}
-            {this.state.cityName &&
-              <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
-                <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput}/>
-              </Link>}
-            {!this.state.cityName &&
-              <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput}/>}
+            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
+              <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput} />
+            </Link>
           </div>
         </form>
       </div>

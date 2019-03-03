@@ -58,11 +58,9 @@ class SkappBar extends Component {
           <SkappSearchInput
             value={this.state.cityName}
             onChange={this.handleChange} />
-          {
             <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
               <SkappButton text='GET WEATHER' iconName='cloud_done' onClick={this.resetInput} />
             </Link>
-          }
         </form>
         {this.props.location.pathname === '/' && <SkappSettingsWidget />}
       </div>
