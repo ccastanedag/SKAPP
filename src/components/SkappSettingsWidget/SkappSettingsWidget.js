@@ -4,7 +4,17 @@ import Switch from '@material-ui/core/Switch'
 import SettingsContext from '../../utils/SkappContexts'
 import { Icon } from '@material-ui/core'
 import { withStyles } from '@material-ui/core'
+import posed from 'react-pose'
 
+const Widget = posed.div(
+  {
+    open: { x: 15 },
+    close: { x: 180 },
+    transition: {
+      x: { type: 'spring', stiffness:100  } 
+    }
+  }
+);
 const switchesStyles = theme => ({
   iOSSwitchBase: {
     '&$iOSChecked': {
@@ -47,11 +57,25 @@ const switchesStyles = theme => ({
 });
 
 export class SkappSettingsWidget extends Component {
+
   static contextType = SettingsContext;
+
+  state = {
+    isOpen: false
+  }
+
+  openCloseWidget = () => {
+    this.setState((prevState) => {
+      return {
+        isOpen: !prevState.isOpen
+      }
+    })
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <div className={styles.widgetContainer}>
+      <Widget className={styles.widgetContainer} pose={this.state.isOpen ? 'open' : 'close'}>
         <div className={styles.settingsBox}>
           <div className={styles.units}>
             <p>Metric Units</p>
@@ -84,10 +108,10 @@ export class SkappSettingsWidget extends Component {
             />
           </div>
         </div>
-        <div className={styles.settingsOpener}>
+        <div className={styles.settingsOpener} onClick={this.openCloseWidget}>
           <Icon className={styles.icon} style={{ fontSize: 24 }}>settings</Icon>
         </div>
-      </div>
+      </Widget>
     );
   }
 }
