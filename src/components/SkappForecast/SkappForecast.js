@@ -17,6 +17,8 @@ export class SkappForecast extends Component {
     const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
     const search = queryString.parse(this.props.location.search);
     if (search.city === '' || !('city' in search)) {
+      //alert(this.props.history);
+      //alert('1');
       this.props.history.push('/page-not-found');
     }
     else {
@@ -38,39 +40,41 @@ export class SkappForecast extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const oldSearch = queryString.parse(prevProps.location.search);
     const newSearch = queryString.parse(this.props.location.search);
-
-    if (('city' in oldSearch) && ('city' in newSearch)) {
-      if (oldSearch.city !== newSearch.city) {
-        this.setState(() => {
-          return {
-            dataForecast: null,
-            countryCity: null
+    
+    if (prevProps.location.search !== this.props.location.search) {
+      if (('city' in oldSearch) && ('city' in newSearch)) {
+        if (oldSearch.city !== newSearch.city) {
+          this.setState(() => {
+            return {
+              dataForecast: null,
+              countryCity: null
+            }
+          });
+          const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
+          const search = queryString.parse(this.props.location.search);
+          if (search.city === '' || !('city' in search)) {
+            //alert('2');
+            this.props.history.push('/page-not-found');
           }
-        });
-        const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
-        const search = queryString.parse(this.props.location.search);
-        console.log('UPDATE', search);
-        if (search.city === '' || !('city' in search)) {
-          this.props.history.push('/page-not-found');
-        }
-        else {
-          const foreCast = await getForecast(search.city, isMetric);
-          if (foreCast.cod === '200') {
-            this.setState(() => {
-              return {
-                dataForecast: getForecastFormatted(foreCast),
-                countryCity: getCountryCity(foreCast)
-              }
-            });
-          }
-          if (foreCast.cod === '404') {
-            this.props.history.push('/city-not-found');
+          else {
+            const foreCast = await getForecast(search.city, isMetric);
+            if (foreCast.cod === '200') {
+              this.setState(() => {
+                return {
+                  dataForecast: getForecastFormatted(foreCast),
+                  countryCity: getCountryCity(foreCast)
+                }
+              });
+            }
+            if (foreCast.cod === '404') {
+              this.props.history.push('/city-not-found');
+            }
           }
         }
       }
-    }
-    else {
-      this.props.history.push('/page-not-found');
+      else {
+          this.props.history.push('/page-not-found');        
+      }
     }
   }
 

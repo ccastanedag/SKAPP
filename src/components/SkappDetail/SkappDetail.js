@@ -8,22 +8,25 @@ import SkappError from '../SkappError/SkappError'
 
 const SkappFlag = ({ countryCode }) => {
   const flagSrc = `https://www.countryflags.io/${countryCode}/flat/64.png`;
-  return <img src={flagSrc} alt='flag country'/>
+  return <img src={flagSrc} alt='flag country' />
 }
 
 export class SkappDetail extends Component {
   componentDidMount() {
     if (this.props.history.location.state) {
       this.setState({
-        isLocationStateValid: true
+        isLocationStateValid: true,
+        locationState: this.props.history.location.state
       });
     }
   }
   backToForecast = () => {
+    // console.log(this.props.history.goBack());
     this.props.history.goBack();
   }
   state = {
-    isLocationStateValid: false
+    isLocationStateValid: false,
+    locationState: null
   }
   static contextType = SettingsContext;
   render() {
@@ -35,7 +38,7 @@ export class SkappDetail extends Component {
         humidity,
         icon,
         max_temperature,
-        min_temperature } = this.props.history.location.state;
+        min_temperature } = this.state.locationState;
     }
 
     return (
@@ -70,7 +73,10 @@ export class SkappDetail extends Component {
             </div>
           </div>
         </div>)}
-        {!this.state.isLocationStateValid && <SkappError icon='cloud_off'
+        {!this.state.isLocationStateValid && <SkappError
+          {...this.props}
+          key='page-not-found-2'
+          icon='cloud_off'
           messages={{
             h1: 'OOPS!',
             h2: 'PAGE NOT FOUND',
