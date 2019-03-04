@@ -77,12 +77,18 @@ h1 {
   font-size: pixelsToEms(35);
   font-style:normal;
   font-weight:100;
+  @media screen and (min-width:$break-medium){
+    font-size: pixelsToEms(45);
+  }
 }
 
 h4{
   @extend h1;
   font-size: pixelsToEms(12);
   font-family: 'NimbusSanL';
+  @media screen and (min-width:$break-medium){
+    font-size: pixelsToEms(16);
+  }
 }
 
 
@@ -92,6 +98,9 @@ h3 {
   font-family: 'NimbusSanL';
   font-weight: 600;
   padding:0.5em;
+  @media screen and (min-width:$break-medium){
+    font-size:pixelsToEms(32);
+  }
 }
 
 .descriptionContainer{
@@ -109,6 +118,9 @@ h2{
   font-size: pixelsToEms(22);
   font-family: 'NimbusSanL';
   font-weight: 100; 
+  @media screen and (min-width:$break-medium){
+    font-size: pixelsToEms(25);
+  }
 }
 h2,h3{
   flex:1;
@@ -131,12 +143,15 @@ h2,h3{
   display:flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
   font-size: pixelsToEms(25);
+  align-items: center;
   font-weight: bold;
   padding:0.35em;
   position:relative;
   z-index: -1;
+  @media screen and (min-width:$break-medium){
+    font-size: pixelsToEms(28);
+  }
 }
 .minTemperature{
   color: $grey-transparent-opaque;
