@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import { Container, Row, Col } from 'react-bootstrap'
 import SkappBar from './components/SkappBar/SkappBar'
 import styles from './Skapp.module.scss'
 import SkappHome from './components/SkappHome/SkappHome'
@@ -23,6 +22,22 @@ class App extends Component {
       }
     });
   }
+
+componentDidUpdate(prevProps,prevState,snapshot){
+  if((this.state.metric !== prevState.metric) || (this.state.light !== prevState.light))
+  {
+    localStorage.setItem('SkappSettings', JSON.stringify(this.state));
+  }
+}
+
+componentDidMount(){
+   if (!localStorage.getItem('SkappSettings')){
+    localStorage.setItem('SkappSettings',JSON.stringify(this.state));
+  } else {
+    let loadedSettings = JSON.parse(localStorage.getItem('SkappSettings'));
+    this.setState(loadedSettings);
+  }
+}
 
   render() {
     return (
