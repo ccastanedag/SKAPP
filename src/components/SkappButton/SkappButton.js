@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './SkappButton.module.scss';
-import PropTypes from 'prop-types';
-import { Icon } from '@material-ui/core';
+import React from 'react'
+import styles from './SkappButton.module.scss'
+import PropTypes from 'prop-types'
+import { Icon } from '@material-ui/core'
 
 export default function SkappButton({ iconName, text, onClick }) {
 

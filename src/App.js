@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-//import { Container, Row, Col } from 'react-bootstrap';
-import SkappBar from './components/SkappBar/SkappBar';
-import styles from './Skapp.module.scss';
-import SkappHome from './components/SkappHome/SkappHome';
-import SkappForecast from './components/SkappForecast/SkappForecast';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SkappError from './components/SkappError/SkappError';
-import SkappDetail from './components/SkappDetail/SkappDetail';
-import SettingsContext from './utils/SkappContexts';
+import React, { Component } from 'react'
+//import { Container, Row, Col } from 'react-bootstrap'
+import SkappBar from './components/SkappBar/SkappBar'
+import styles from './Skapp.module.scss'
+import SkappHome from './components/SkappHome/SkappHome'
+import SkappForecast from './components/SkappForecast/SkappForecast'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import SkappError from './components/SkappError/SkappError'
+import SkappDetail from './components/SkappDetail/SkappDetail'
+import SettingsContext from './utils/SkappContexts'
 
 class App extends Component {
 
@@ -62,4 +62,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

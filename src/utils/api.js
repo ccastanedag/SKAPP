@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment'
 
 const MY_API_KEY = 'fa5f782c06225dc875abd35418b44543';
 

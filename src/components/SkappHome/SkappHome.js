@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styles from './SkappHome.module.scss';
-import SkappSearchInput from '../SkappSearchInput/SkappSearchInput';
-import SkappButton from '../SkappButton/SkappButton';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import styles from './SkappHome.module.scss'
+import SkappSearchInput from '../SkappSearchInput/SkappSearchInput'
+import SkappButton from '../SkappButton/SkappButton'
+import { Link } from 'react-router-dom'
 
 class SkappHome extends Component {
 

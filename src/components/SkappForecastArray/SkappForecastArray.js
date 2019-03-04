@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import SkappButton from '../SkappButton/SkappButton';
-import styles from './SkappForecastArray.module.scss';
-import { Link } from 'react-router-dom';
-import { toTitleCase } from '../../utils/api';
+import SkappButton from '../SkappButton/SkappButton'
+import styles from './SkappForecastArray.module.scss'
+import { Link } from 'react-router-dom'
+import { toTitleCase } from '../../utils/api'
 import SettingsContext from '../../utils/SkappContexts'
 
 export const SkappIcon = ({ icon, size }) => {

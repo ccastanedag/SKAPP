@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import styles from './SkappForecast.module.scss';
-import SkappChart from '../SkappChart/SkappChart';
-import SkappForecastArray from '../SkappForecastArray/SkappForecastArray';
-import queryString from 'query-string';
-import { getForecast, getForecastFormatted, getCountryCity } from '../../utils/api';
+import styles from './SkappForecast.module.scss'
+import SkappChart from '../SkappChart/SkappChart'
+import SkappForecastArray from '../SkappForecastArray/SkappForecastArray'
+import queryString from 'query-string'
+import { getForecast, getForecastFormatted, getCountryCity } from '../../utils/api'
 import SettingsContext from '../../utils/SkappContexts'
 
 export class SkappForecast extends Component {

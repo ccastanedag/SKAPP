@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 const SettingsContext = React.createContext({
   settings: {
     metric: true, // False means Imperial Units
@@ -8,4 +8,4 @@ const SettingsContext = React.createContext({
 }
 );
 
-export default SettingsContext;
+export default SettingsContext

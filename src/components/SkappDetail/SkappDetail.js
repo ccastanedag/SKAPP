@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import styles from './SkappDetail.module.scss';
-import { SkappIcon } from '../SkappForecastArray/SkappForecastArray';
-import SkappButton from '../SkappButton/SkappButton';
+import styles from './SkappDetail.module.scss'
+import { SkappIcon } from '../SkappForecastArray/SkappForecastArray'
+import SkappButton from '../SkappButton/SkappButton'
 import SettingsContext from '../../utils/SkappContexts'
 import SkappError from '../SkappError/SkappError'
 

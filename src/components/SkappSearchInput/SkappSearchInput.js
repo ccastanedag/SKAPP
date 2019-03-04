@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import styles from './SkappSearchInput.module.scss';
-import { Icon } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import styles from './SkappSearchInput.module.scss'
+import { Icon } from '@material-ui/core'
+import PropTypes from 'prop-types'
 
 class SkappSearchInput extends Component {
   static propTypes = {
