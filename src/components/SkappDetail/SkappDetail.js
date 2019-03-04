@@ -54,7 +54,7 @@ export class SkappDetail extends Component {
             <div className={styles.descriptionContainer}>
               <h2>{description}</h2>
               <div className={styles.iconContainer}>
-                <SkappIcon icon={icon} size={120} />
+                <SkappIcon icon={icon} size={90} />
               </div>
             </div>
             <div className={styles.temperaturesContainer}>
