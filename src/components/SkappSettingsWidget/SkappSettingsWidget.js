@@ -8,10 +8,17 @@ import posed from 'react-pose'
 
 const Widget = posed.div(
   {
-    open: { x: 15 },
-    close: { x: 180 },
-    transition: {
-      x: { type: 'spring', stiffness:100  } 
+    open: {
+      x: 15,
+      transition: {
+        x: { type: 'spring', stiffness: 75 }
+      }
+    },
+    close: {
+      x: 180,
+      transition: {
+        x: { ease: 'easeOut', duration: 300 }
+      }
     }
   }
 );

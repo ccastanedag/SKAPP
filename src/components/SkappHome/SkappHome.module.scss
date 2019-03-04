@@ -37,6 +37,14 @@
   color: rgba(60, 60, 60, 0.7);
   font-size: pixelsToEms(30);
   padding-bottom: 1em;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
 }
 
 .homeTop {
