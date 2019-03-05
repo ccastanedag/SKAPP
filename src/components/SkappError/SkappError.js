@@ -25,7 +25,7 @@ backToHome = () => {
     return (
       <div>
         <div className={styles.errorContainer}>
-          <Icon style={{ fontSize: 250, color: '#00CDAC' }}>{icon}</Icon>
+          <Icon style={{ fontSize: 180, color: '#00CDAC' }}>{icon}</Icon>
           <div className={styles.h1}>
             {messages.h1}
           </div>
