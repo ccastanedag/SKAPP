@@ -4,13 +4,15 @@ import SettingsContext from '../../utils/SkappContexts'
 import { Line } from 'react-chartjs-2'
 import styles from './SkappChart.module.scss'
 import { defaults } from 'react-chartjs-2'
+import { Box } from '../../utils/SkappAnimations' 
 
 export class SkappChart extends Component {
   static contextType = SettingsContext;
   state = {
     select:null, // (Average Temperature / Humidity)
     dataToRender: null,
-    labelToRender: null
+    labelToRender: null,
+    animation: 'begin'
   }
   static propTypes = {
     dataChart: PropTypes.arrayOf(PropTypes.shape({
@@ -35,7 +37,8 @@ export class SkappChart extends Component {
       return {
         dataToRender: this.getDataToRender('temperature'),
         labelToRender: dateLabels,
-        select: 'Avg. Temperature'
+        select: 'Avg. Temperature',
+        animation: 'end'
       }
     });
   }
@@ -80,7 +83,7 @@ export class SkappChart extends Component {
     };
     return (
       <div className={styles.chartContainer}>
-        <div className={styles.shadowContainer}>
+        <Box className={styles.shadowContainer} pose={this.state.animation}>
           <div className={styles.selectContainer}>
             <select name="dataToDraw" onChange={this.handleChange}>
               <option value="temperature">Average Temperature</option>
@@ -147,7 +150,7 @@ export class SkappChart extends Component {
               : (this.context.settings.metric? 'Celsius':'Farenheit')
               }</div>
           </div>
-        </div>
+        </Box>
       </div>
     )
   }

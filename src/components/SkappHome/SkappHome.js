@@ -9,8 +9,7 @@ class SkappHome extends Component {
 
   state = {
     cityName: '',
-    animation: 'begin',
-    intervalId: null
+    animation: 'begin'
   }
 
   handleChange = (event) => {
@@ -29,20 +28,11 @@ class SkappHome extends Component {
   }
 
   componentDidMount(){
-    const id =  setInterval(()=>{
-      this.setState({
-        animation: 'end'
-      });
-    },150);
-
     this.setState({
-      intervalId: id
+      animation: 'end'
     });
   }
 
-  componentWillUnmount(){
-    clearInterval(this.state.intervalId);
-  }
 
   render() {
     return (
