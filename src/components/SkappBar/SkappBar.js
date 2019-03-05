@@ -58,7 +58,7 @@ class SkappBar extends Component {
           <SkappSearchInput
             value={this.state.cityName}
             onChange={this.handleChange} />
-            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
+            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }} className={styles.link}>
               <SkappButton text='GET WEATHER' iconName='cloud_done' onClick={this.resetInput} />
             </Link>
         </form>

@@ -45,7 +45,7 @@ class SkappHome extends Component {
               onChange={this.handleChange} />
           </div>
           <div className={styles.homeBottom}>
-            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }}>
+            <Link to={{ pathname: '/forecast', search: '?city=' + this.state.cityName }} className={styles.link}>
               <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput} />
             </Link>
           </div>

@@ -64,6 +64,13 @@ form.SkappBar {
   }
 }
 
+.link{
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 /*
 *   SkappBack Style
 */

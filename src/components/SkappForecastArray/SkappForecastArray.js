@@ -64,7 +64,7 @@ export class SkappForecastArray extends Component {
                         max_temperature: Math.round(day.max_temperature),
                         humidity: day.humidity
                       }
-                    }}>
+                    }} className={styles.link}>
                       <SkappButton iconName='search' text='MORE DETAILS' />
                     </Link>
                   </div>

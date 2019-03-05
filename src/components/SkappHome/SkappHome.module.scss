@@ -64,3 +64,10 @@
   background-color: $white-transparent-translucent;
   @include SkappRadius(0px, 0px, 15px, 15px);
 }
+
+.link{
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
