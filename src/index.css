@@ -1,31 +1,38 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-html,body, #root{
+html,
+body {
   height: 100%;
 }
 
-#root{
-  display:flex;
+#root {
+  display: flex;
   flex-direction: column;
+  width: 100%;
+  background-color: #ECEFF0;
+  background: url('./images/Waves.svg') bottom right / contain no-repeat, url('./images/Continents.svg') 20% center /contain repeat-y;
+}
+
+@media screen and (min-width: 1200px) {
+  #root {
+    background: url('./images/Waves.svg') bottom right / contain no-repeat, url('./images/Continents.svg') 20% center /contain no-repeat;
+  }
 }
 
 body {
   overflow-x: hidden;
   width: 100%;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }

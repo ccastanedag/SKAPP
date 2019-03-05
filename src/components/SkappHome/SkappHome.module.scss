@@ -6,11 +6,9 @@
   height: calc(100vh - #{$bar-height-small});
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: $break-medium) and (orientation: landscape) {
-    height:calc(100vw - #{$bar-height-small});
-  }
   @media screen and (max-width: $break-large) and (orientation: landscape) {
-    height:calc(100vw - #{$bar-height-medium});
+    height:auto;
+    margin:1.5em 0;
   }
   @media screen and (min-width: $break-medium) and (orientation: portrait) {
     height: calc(100vh - #{$bar-height-medium});

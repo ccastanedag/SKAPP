@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import SkappBar from './components/SkappBar/SkappBar'
-import styles from './Skapp.module.scss'
 import SkappHome from './components/SkappHome/SkappHome'
 import SkappForecast from './components/SkappForecast/SkappForecast'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -57,7 +56,7 @@ class App extends Component {
     return (
       <Router>
         <Route render={({ location }) => (
-          <div className={styles.background}>
+          <div>
             <SettingsContext.Provider value={{ settings: this.state, updateSettings: this.updateSettings }}>
               <Route path='/' component={SkappBar} key='bar' />
               <PoseGroup>
