@@ -53,4 +53,16 @@ const LI = posed.li({
   }
 });
 
-export { Box, UL, LI }
+const BUTTON = posed.button({
+  pressable:true,
+  init:{
+    scale:1,
+    y:0
+  },
+  press: {
+    scale:0.95,
+    y:2
+  }
+});
+
+export { Box, UL, LI, BUTTON }

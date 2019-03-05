@@ -15,7 +15,7 @@
   margin: 1.25em;
   cursor: pointer;
   &:hover {
-    background-color: darken($color: $primary-color, $amount: 1%);
+    background-color: darken($color: $primary-color, $amount: 2%);
   }
   &:focus{
     outline: none;

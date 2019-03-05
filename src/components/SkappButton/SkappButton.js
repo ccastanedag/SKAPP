@@ -2,15 +2,16 @@ import React from 'react'
 import styles from './SkappButton.module.scss'
 import PropTypes from 'prop-types'
 import { Icon } from '@material-ui/core'
+import { BUTTON } from '../../utils/SkappAnimations'
 
 export default function SkappButton({ iconName, text, onClick }) {
 
   return (
-    <div> 
-      <button className={styles.skappButton} onClick={onClick}>
+    <div>
+      <BUTTON className={styles.skappButton} onClick={onClick}>
         <Icon className={styles.icon} style={{ fontSize: 25 }}>{iconName}</Icon>
         {text}
-      </button>
+      </BUTTON>
     </div>
   );
 }
@@ -22,5 +23,5 @@ SkappButton.propTypes = {
 }
 
 SkappButton.defaultProps = {
-  onClick: ()=>{}
+  onClick: () => { }
 }
