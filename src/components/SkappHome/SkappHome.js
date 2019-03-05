@@ -3,11 +3,14 @@ import styles from './SkappHome.module.scss'
 import SkappSearchInput from '../SkappSearchInput/SkappSearchInput'
 import SkappButton from '../SkappButton/SkappButton'
 import { Link } from 'react-router-dom'
+import { Box } from '../../utils/SkappAnimations' 
 
 class SkappHome extends Component {
 
   state = {
-    cityName: ''
+    cityName: '',
+    animation: 'begin',
+    intervalId: null
   }
 
   handleChange = (event) => {
@@ -25,10 +28,26 @@ class SkappHome extends Component {
     });
   }
 
+  componentDidMount(){
+    const id =  setInterval(()=>{
+      this.setState({
+        animation: 'end'
+      });
+    },150);
+
+    this.setState({
+      intervalId: id
+    });
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.state.intervalId);
+  }
+
   render() {
     return (
       <div className={styles.homeContainer}>
-        <form className={styles.homeBox}>
+        <Box className={styles.homeBox} pose={this.state.animation}>
           <div className={styles.homeTop}>
             <label className={styles.title}>Enter a city</label>
             <SkappSearchInput
@@ -40,7 +59,7 @@ class SkappHome extends Component {
               <SkappButton iconName='cloud_done' text='GET WEATHER' onClick={this.resetInput} />
             </Link>
           </div>
-        </form>
+        </Box>
       </div>
     );
   }
