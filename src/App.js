@@ -27,8 +27,7 @@ const RoutesContainer = posed.div({
 class App extends Component {
 
   state = {
-    metric: true, // False means Imperial Units
-    light: true // False means Dark Theme
+    metric: true // False means Imperial Units
   }
 
   updateSettings = (option) => {
@@ -40,7 +39,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if ((this.state.metric !== prevState.metric) || (this.state.light !== prevState.light)) {
+    if ((this.state.metric !== prevState.metric)) {
       localStorage.setItem('SkappSettings', JSON.stringify(this.state));
     }
   }

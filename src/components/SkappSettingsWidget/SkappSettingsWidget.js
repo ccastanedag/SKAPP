@@ -15,7 +15,7 @@ const Widget = posed.div(
       }
     },
     close: {
-      x: 180,
+      x: 195,
       transition: {
         x: { ease: 'easeOut', duration: 300 }
       }
@@ -90,21 +90,6 @@ export class SkappSettingsWidget extends Component {
               checked={this.context.settings.metric}
               onChange={(event) => this.context.updateSettings(event.target.value)}
               value="metric"
-              classes={{
-                switchBase: classes.iOSSwitchBase,
-                bar: classes.iOSBar,
-                icon: classes.iOSIcon,
-                iconChecked: classes.iOSIconChecked,
-                checked: classes.iOSChecked,
-              }}
-            />
-          </div>
-          <div className={styles.theme}>
-            <p>Light Theme</p>
-            <Switch
-              checked={this.context.settings.light}
-              onChange={(event) => this.context.updateSettings(event.target.value)}
-              value="light"
               classes={{
                 switchBase: classes.iOSSwitchBase,
                 bar: classes.iOSBar,
