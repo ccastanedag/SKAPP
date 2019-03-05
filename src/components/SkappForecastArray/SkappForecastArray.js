@@ -5,6 +5,7 @@ import styles from './SkappForecastArray.module.scss'
 import { Link } from 'react-router-dom'
 import { toTitleCase } from '../../utils/api'
 import SettingsContext from '../../utils/SkappContexts'
+import { UL, LI } from '../../utils/SkappAnimations'
 
 export const SkappIcon = ({ icon, size }) => {
   const imgSrc = `/images/${icon}.svg`;
@@ -23,15 +24,24 @@ export class SkappForecastArray extends Component {
     dataForecast: PropTypes.array.isRequired, // The data required to render the chart and cards
     unit: PropTypes.string.isRequired,
   }
+  state = {
+    animation: 'begin'
+  }
+
+  componentDidMount(){
+    this.setState({
+      animation: 'end'
+    });
+  }
 
   render() {
     const { dataForecast, countryCity } = this.props;
     return (
-      <ul className={styles.arrayContainer}>
+      <UL className={styles.arrayContainer} pose={this.state.animation}>
         {
           dataForecast.map((day) => {
             return (
-              <li key={day.date}>
+              <LI key={day.date}>
                 <div className={styles.dayContainer}>
                   <div className={styles.temperatureIconContainer}>
                     <div className={styles.temperature}>{day.temperature} {this.context.settings.metric? 'C°':'F°'}</div>
@@ -59,11 +69,11 @@ export class SkappForecastArray extends Component {
                     </Link>
                   </div>
                 </div>
-              </li>
+              </LI>
             );
           })
         }
-      </ul>
+      </UL>
     )
   }
 }
