@@ -4,7 +4,7 @@ import { SkappIcon } from '../SkappForecastArray/SkappForecastArray'
 import SkappButton from '../SkappButton/SkappButton'
 import SettingsContext from '../../utils/SkappContexts'
 import SkappError from '../SkappError/SkappError'
-
+import { Box } from '../../utils/SkappAnimations'
 
 const SkappFlag = ({ countryCode }) => {
   const flagSrc = `https://www.countryflags.io/${countryCode}/flat/64.png`;
@@ -16,17 +16,18 @@ export class SkappDetail extends Component {
     if (this.props.history.location.state) {
       this.setState({
         isLocationStateValid: true,
-        locationState: this.props.history.location.state
+        locationState: this.props.history.location.state,
+        animation: 'end'
       });
     }
   }
   backToForecast = () => {
-    // console.log(this.props.history.goBack());
     this.props.history.goBack();
   }
   state = {
     isLocationStateValid: false,
-    locationState: null
+    locationState: null,
+    animation: 'begin'
   }
   static contextType = SettingsContext;
   render() {
@@ -44,7 +45,7 @@ export class SkappDetail extends Component {
     return (
       <div>
         {this.state.isLocationStateValid && (<div className={styles.detailContainer}>
-          <div className={styles.detailShape}>
+          <Box className={styles.detailShape} pose={this.state.animation}>
             <div className={styles.cityContainer}>
               <div className={styles.city}>
                 <h1>{city}</h1>
@@ -71,7 +72,7 @@ export class SkappDetail extends Component {
             <div className={styles.backButtonContainer}>
               <SkappButton iconName='search' text='BACK TO FORECAST' onClick={this.backToForecast} />
             </div>
-          </div>
+          </Box>
         </div>)}
         {!this.state.isLocationStateValid && <SkappError
           {...this.props}
