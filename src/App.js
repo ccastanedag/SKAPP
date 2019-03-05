@@ -10,18 +10,18 @@ import SettingsContext from './utils/SkappContexts'
 import posed, { PoseGroup } from 'react-pose'
 
 const RoutesContainer = posed.div({
-  enter: { opacity: 1, delay:150, 
-    /*transition: {
-      opacity: { ease: 'easeIn', duration:350}
-    }*/
-    transition: { type: 'spring', stiffness: 100 }
-   },
-  exit: { opacity: 0, delay:150,
-    /*transition: {
-      opacity: { ease: 'easeIn', duration:350 }
-    }*/
-    transition: { type: 'spring', stiffness: 100 }
-   }
+  enter: {
+    opacity: 1, delay: 150,
+    transition: {
+      opacity: { ease: 'easeIn', duration: 150 }
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      opacity: { ease: 'easeIn', duration: 150 }
+    }
+  }
 });
 
 class App extends Component {
@@ -60,13 +60,13 @@ class App extends Component {
         <Route render={({ location }) => (
           <div className={styles.background}>
             <SettingsContext.Provider value={{ settings: this.state, updateSettings: this.updateSettings }}>
-              <Route path='/' component={SkappBar} key='bar'/>
+              <Route path='/' component={SkappBar} key='bar' />
               <PoseGroup>
                 <RoutesContainer key={location.pathname}>
                   <Switch location={location}>
-                    <Route exact path='/' component={SkappHome} key='home'/>
-                    <Route exact path='/forecast' component={SkappForecast} key='forecast'/>
-                    <Route path='/details' component={SkappDetail} key='details'/>
+                    <Route exact path='/' component={SkappHome} key='home' />
+                    <Route exact path='/forecast' component={SkappForecast} key='forecast' />
+                    <Route path='/details' component={SkappDetail} key='details' />
                     <Route exact path='/city-not-found' render={(props) => <SkappError
                       {...props}
                       key='city-not-found'

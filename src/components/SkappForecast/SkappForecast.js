@@ -5,6 +5,7 @@ import SkappForecastArray from '../SkappForecastArray/SkappForecastArray'
 import queryString from 'query-string'
 import { getForecast, getForecastFormatted, getCountryCity } from '../../utils/api'
 import SettingsContext from '../../utils/SkappContexts'
+import SkappLoading from '../SkappLoading/SkappLoading'
 
 export class SkappForecast extends Component {
   static contextType = SettingsContext;
@@ -17,8 +18,6 @@ export class SkappForecast extends Component {
     const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
     const search = queryString.parse(this.props.location.search);
     if (search.city === '' || !('city' in search)) {
-      //alert(this.props.history);
-      //alert('1');
       this.props.history.push('/page-not-found');
     }
     else {
@@ -53,7 +52,6 @@ export class SkappForecast extends Component {
           const isMetric = this.context.settings.metric ? 'metric' : 'imperial';
           const search = queryString.parse(this.props.location.search);
           if (search.city === '' || !('city' in search)) {
-            //alert('2');
             this.props.history.push('/page-not-found');
           }
           else {
@@ -84,7 +82,7 @@ export class SkappForecast extends Component {
       <div className={styles.forecastContainer}>
         {dataForecast && <SkappChart dataChart={dataForecast} />}
         {dataForecast && <SkappForecastArray dataForecast={dataForecast} unit='Celsius' countryCity={countryCity} />}
-        {!dataForecast && <p>LOADING</p>}
+        {!dataForecast && <SkappLoading/>}
       </div>
     )
   }
