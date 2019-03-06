@@ -30,7 +30,9 @@ SKAPP was implemented using the following technlogies and software development t
 ### Screenshots
 **Mobile Version**
 ![](https://i.imgur.com/A1XlD4b.png)
+
 **Tablet Version**
 ![](https://i.imgur.com/NvAaLHI.png)
+
 **Desktop Version**
 ![](https://i.imgur.com/Qbrzy4l.png)
